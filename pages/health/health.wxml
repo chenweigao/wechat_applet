@@ -1,0 +1,17 @@
+<!--pages/health/health.wxml-->
+<view class='myclass'>
+<button
+  type="primary"
+  bindtap="start"
+>
+  Start
+</button>
+</view>
+<view class='myclass'>
+<button
+  type="warn"
+  bindtap='stop'
+>
+  Stop
+</button>
+</view>

@@ -1,0 +1,7 @@
+<template name="footer1">
+Footer1
+</template>
+
+<template name="footer2">
+Footer2
+</template>

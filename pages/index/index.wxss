@@ -1,0 +1,28 @@
+/**index.wxss**/
+.container {
+  height: 50%;
+  width: 100%;
+  background-color: azure;
+  display: flex;
+  flex-direction: row; /*默认值 column*/
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  
+}
+
+.item {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: royalblue;
+  border: 1rpx solid #fff;
+
+  flex-grow: 1; 
+  /* 占据多余的空间 */
+  flex-shrink: 1;
+}
+
+.scroll-view-item{
+  height: 100px;
+  background-color: red;
+}

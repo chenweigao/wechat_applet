@@ -1,0 +1,5 @@
+/* pages/health/health.wxss */
+.myclass {
+  height: 50%;
+  width: 90%;
+}

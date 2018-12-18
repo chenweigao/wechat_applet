@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class='section'>
+  <swiper indicator-dots="true" autoplay="true" interval="8000" duration="1000">
+
+    <swiper-item>
+      <image src="../../icons/home.png" class="slide-image" width="355" height="150" />
+    </swiper-item>
+    <swiper-item>
+      <image src="../../icons/home.png" class="slide-image" width="355" height="150" />
+    </swiper-item>
+    <swiper-item>
+      <image src="../../icons/home.png" class="slide-image" width="355" height="150" />
+    </swiper-item>
+
+  </swiper>
+</view>

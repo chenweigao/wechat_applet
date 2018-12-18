@@ -1,0 +1,19 @@
+<!--pages/login/login.wxml-->
+<text>pages/login/login.wxml</text>
+<view>
+  <view>Username:</view>
+  <view>
+    <input bindinput='usernameInput' />
+  </view>
+</view>
+
+<view>
+  <view>Password:</view>
+  <view>
+    <input bindinput='passwordInput' />
+  </view>
+</view>
+
+<view>
+<button bindtap='loginBtnClick'>Login</button>
+</view>

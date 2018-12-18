@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/health/health",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/user/user",
+    "pages/login/login"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#2570a1",
+    "navigationBarTitleText": "活着的码农",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "Home",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/home_selected.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "Function",
+        "iconPath": "icons/snow.png",
+        "selectedIconPath": "icons/snow_selected.png"
+      },
+      {
+        "pagePath": "pages/health/health",
+        "text": "Sleep",
+        "iconPath": "icons/health.png",
+        "selectedIconPath": "icons/health_selected.png"
+      }
+    ]
+  }
+}
