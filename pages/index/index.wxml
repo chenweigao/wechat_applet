@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class='section'>
+<!-- <view class='section'>
   <swiper indicator-dots="true" autoplay="true" interval="8000" duration="1000">
 
     <swiper-item>
@@ -13,4 +13,4 @@
     </swiper-item>
 
   </swiper>
-</view>
+</view> -->

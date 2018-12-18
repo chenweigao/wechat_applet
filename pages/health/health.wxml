@@ -1,17 +1,27 @@
 <!--pages/health/health.wxml-->
 <view class='myclass'>
-<button
-  type="primary"
-  bindtap="start"
->
-  Start
-</button>
+  <button type="primary" bindtap="start">
+    Start
+  </button>
 </view>
 <view class='myclass'>
-<button
-  type="warn"
-  bindtap='stop'
->
-  Stop
-</button>
+  <button type="warn" bindtap='stop'>
+    Stop
+  </button>
+  <text>{{totalSleepTime}}</text>
+
+</view>
+
+<view>
+  <button type="default" bindtap='cloudUpload'>
+    Upload
+  </button>
+
+  <button type="default" bindtap='getDatabase'>
+    GetDatabase
+  </button>
+</view>
+
+<view wx:for="{{cloudSleepData}}">
+  {{item.startTimeString}} -- 你睡了: {{ item.totalSleepTime }}
 </view>

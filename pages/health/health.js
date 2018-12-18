@@ -1,4 +1,10 @@
 // pages/health/health.js
+wx.cloud.init({
+  env: 'tencent-c-9d0b3f'
+})
+const db = wx.cloud.database()
+const now = new Date()
+
 Page({
 
   /**
@@ -15,7 +21,9 @@ Page({
     stopDay: null,
     startTime: null,
     stopTime: null,
-    totalSleepTime: null
+    totalSleepTime: null,
+    cloudSleepData: null,
+    startTimeString: null
   },
 
   /**
@@ -77,9 +85,9 @@ Page({
   start: function (e) {
     console.log(e)
     var date = new Date(e._relatedInfo.anchorTapTime)
+    console.log(date.toString())
+    this.setData({ startDay: date.toLocaleDateString(), startTime: date.getTime(), startTimeString: date.toLocaleString() })
     // console.log(date.toLocaleDateString())
-    this.setData({ startDay: date.toLocaleDateString(), startTime: date.getTime() })
-    console.log(this.data.startTime)
 
   },
   stop: function (e) {
@@ -96,25 +104,34 @@ Page({
       var hours = parseInt((timeShift % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
       var minutes = parseInt((timeShift % (1000 * 60 * 60)) / (1000 * 60))
       var seconds = (timeShift % (1000 * 60)) / 1000
-      var sleepTime = hours + " hours " + minutes + " minutes " + seconds + " seconds"
-      this.setData({ totalSleepTime: sleepTime })
-      console.log(this.data.totalSleepTime)
+      var sleepTime = hours + "(h)" + minutes + "(m)" + seconds + "(s)"
+      var sleepMinutes = 60 * hours + minutes
+      this.setData({ totalSleepTime: sleepTime, totalSleepMinutes: sleepMinutes })
+      console.log(this.data.totalSleepMinutes)
     }
   },
-  getSleepTime: function () {
-    if (this.data.startTime == null || this.data.stopTime == null) {
-      console.log("no time...")
-    }
-    else {
-      var timeShift = (this.data.stopTime - this.data.startTime)
-      var days = parseInt(timeShift / (1000 * 60 * 60 * 24))
-      var hours = parseInt((timeShift % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-      var minutes = parseInt((timeShift % (1000 * 60 * 60)) / (1000 * 60))
-      var seconds = (timeShift % (1000 * 60)) / 1000
-      var sleepTime = hours + " hours " + minutes + " minutes " + seconds + " seconds"
-      this.setData({ totalSleepTime: sleepTime })
-      console.log(this.data.totalSleepTime)
-    }
+
+  cloudUpload: function () {
+    db.collection('sleep').add({
+      data: {
+        startDay: this.data.startDay,
+        startTimeString: this.data.startTimeString,
+        totalSleepTime: this.data.totalSleepTime,
+        totalSleepMinutes: this.data.totalSleepMinutes
+      }
+    }).then(res => {
+      console.log(res)
+    })
+  },
+
+  getDatabase: function() {
+    db.collection('sleep').where({
+      startDay: this.data.startDay
+    }).
+    get().then(res => {
+      console.log(res.data)
+      this.setData({ cloudSleepData: res.data})
+    })
   }
 
 })
