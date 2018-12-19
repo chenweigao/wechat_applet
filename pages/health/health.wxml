@@ -1,27 +1,43 @@
 <!--pages/health/health.wxml-->
-<view class='myclass'>
-  <button type="primary" bindtap="start">
-    Start
-  </button>
-</view>
-<view class='myclass'>
-  <button type="warn" bindtap='stop'>
-    Stop
-  </button>
-  <text>{{totalSleepTime}}</text>
 
-</view>
+
+
+<!-- <view wx:for="{{cloudSleepData}} ">
+  {{item.startTimeString}} -- 你睡了: {{ item.totalSleepTime }}
+</view> -->
+
+<van-row>
+  <van-col span="6">
+    <open-data type="userAvatarUrl"></open-data>
+  </van-col>
+  <van-col span="6" offset="2">
+    <open-data type="userNickName"></open-data>
+  </van-col>
+
+</van-row>
+<!-- <van-cell-group>
+  <van-cell title="时长" value="{{totalSleepTime}}" label="本次睡眠时长统计" border="{{ false }}" />
+  <van-cell title="总计" value="{{totalSleepTime}}" label="本周平均睡眠时长" border="{{ false }}" />
+</van-cell-group> -->
+<van-panel title="时长" desc="本次睡眠时长统计" status="{{totalSleepTime}}" use-footer-slot>
+    <scroll-view
+    scroll-y
+    style="height: 200px;"
+  >
+  <view wx:for="{{cloudSleepData}}" class='my-font' scroll-y="{{ true }}" enable-back-to-top="{{true}}">
+  {{item.startTimeString}} : {{ item.totalSleepTime }}
+  </view>
+  </scroll-view>
+  <view slot="footer">
+    <!-- <van-button plain type="warning" bindtap='cloudUpload'>Upload</van-button>
+    <van-button plain type="primary" bindtap='getDatabase'>Database</van-button> -->
+  <van-cell title="总计" value="{{sleepFormated}}" label="今日睡眠总时长" border="{{ false }}" />
+
+  </view>
+</van-panel>
 
 <view>
-  <button type="default" bindtap='cloudUpload'>
-    Upload
-  </button>
-
-  <button type="default" bindtap='getDatabase'>
-    GetDatabase
-  </button>
+  <van-button type="primary" bindtap="start" size="large">Start</van-button>
+  <van-button type="danger" bindtap="stop" size="large">Stop</van-button>
 </view>
-
-<view wx:for="{{cloudSleepData}}">
-  {{item.startTimeString}} -- 你睡了: {{ item.totalSleepTime }}
-</view>
+<!-- <van-submit-bar button-text="云同步" bind:submit="onSubmit" /> -->

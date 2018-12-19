@@ -1,5 +1,8 @@
 /* pages/health/health.wxss */
-.myclass {
-  height: 50%;
-  width: 100%;
+
+
+.my-font {
+  font-size: 30rpx;
+  /* font-weight: 100; */
+  color: #2570a1;
 }

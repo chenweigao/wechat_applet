@@ -1,0 +1,11 @@
+{
+  "name": "wechat_local",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/chenweigao/wechat_applet.git",
+  "author": "chenweigao <297859260@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vant-weapp": "^0.4.9"
+  }
+}
