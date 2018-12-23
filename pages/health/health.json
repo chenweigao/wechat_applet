@@ -7,6 +7,8 @@
     "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
     "van-cell-group": "../../miniprogram_npm/vant-weapp/cell-group/index",
     "van-submit-bar": "../../miniprogram_npm/vant-weapp/submit-bar/index",
-    "van-panel": "../../miniprogram_npm/vant-weapp/panel/index"
+    "van-panel": "../../miniprogram_npm/vant-weapp/panel/index",
+    "van-transition": "../../miniprogram_npm/vant-weapp/transition/index",
+    "van-icon":"../../miniprogram_npm/vant-weapp/icon/index"
   }
 }

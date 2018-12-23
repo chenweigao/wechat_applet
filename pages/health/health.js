@@ -26,15 +26,14 @@ Page({
     cloudSleepData: null,
     startTimeString: null,
     sleepFormated: null,
-    toView: 'red',
-    scrollTop: 100
+    scrollTop: 10
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
- 
+
 
   },
   /**
@@ -62,14 +61,33 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+  },
 
+  loadHistory: function () {
+    const _ = db.command
+    db.collection('sleep').where({
+      totalSleepMinutes: _.gte(600)
+    }).limit(10).
+      get().then(res => {
+        console.log(res.data)
+        this.setData({
+          cloudSleepData: res.data
+        })
+      })
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    db.collection('sleep').where({
+    }).limit(10).
+      get().then(res => {
+        console.log(res.data)
+        this.setData({
+          cloudSleepData: res.data
+        })
+      })
   },
 
   /**
@@ -88,6 +106,7 @@ Page({
 
   start: function (e) {
     console.log(e)
+
     var date = new Date(e._relatedInfo.anchorTapTime)
     console.log(date.toString())
     var y = date.getFullYear()
@@ -96,14 +115,17 @@ Page({
     var hh = date.getHours().toString().padStart(2, '0')
     var mm = date.getMinutes().toString().padStart(2, '0')
     var ss = date.getSeconds().toString().padStart(2, '0')
-    var formattedTime = y + "-" + m + '-'+ d  + " " + hh + ":" + mm
+    var formattedTime = y + "-" + m + '-' + d + " " + hh + ":" + mm
     console.log(formattedTime)
     this.setData({
       startDay: date.toLocaleDateString(),
       startTime: date.getTime(),
-      startTimeString: formattedTime
+      startTimeString: formattedTime,
+      totalSleepTime: "Sleeping...",
+      sleepFormated: "Sleeping..."
     })
-    // console.log(date.toLocaleDateString())
+    console.log(this.data.startDay)
+
 
   },
   stop: function (e) {
@@ -152,7 +174,7 @@ Page({
           var secondTime = parseInt(sum)
           if (secondTime > 60) {
             minuteTime = parseInt(secondTime / 60);
-            secondTime = parseInt(secondTime % 60); 
+            secondTime = parseInt(secondTime % 60);
             if (minuteTime > 60) {
               hourTime = parseInt(minuteTime / 60);
               minuteTime = parseInt(minuteTime % 60);
@@ -171,6 +193,6 @@ Page({
       // console.log(this.data.totalSleepMinutes)
     }
   }
-  
+
 
 })

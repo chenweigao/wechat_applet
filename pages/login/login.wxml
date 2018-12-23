@@ -1,19 +1,24 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
-<view>
-  <view>Username:</view>
-  <view>
-    <input bindinput='usernameInput' />
-  </view>
-</view>
+
+<van-cell-group>
+  <van-field
+    value="{{ username }}"
+    required
+    clearable
+    label="用户名"
+    placeholder="请输入用户名"
+    bind:blur="usernameInput"
+  />
+
+  <van-field
+    value="{{ password }}"
+    type="password"
+    label="密码"
+    placeholder="请输入密码"
+    border="{{ false }}"
+    bind:blur="passwordInput"
+  />
+</van-cell-group>
 
 <view>
-  <view>Password:</view>
-  <view>
-    <input bindinput='passwordInput' />
-  </view>
-</view>
-
-<view>
-<button bindtap='loginBtnClick'>Login</button>
+<van-button size="large" type='primary' bind:click="loginBtnClick" >认证</van-button>
 </view>

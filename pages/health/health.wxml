@@ -5,39 +5,52 @@
 <!-- <view wx:for="{{cloudSleepData}} ">
   {{item.startTimeString}} -- 你睡了: {{ item.totalSleepTime }}
 </view> -->
+<van-transition name="slide-down" duration="1000">
 
-<van-row>
-  <van-col span="6">
-    <open-data type="userAvatarUrl"></open-data>
-  </van-col>
-  <van-col span="6" offset="2">
-    <open-data type="userNickName"></open-data>
-  </van-col>
+  <van-row>
+    <van-col span="6">
+      <open-data type="userAvatarUrl"></open-data>
+    </van-col>
+    <van-col span="6" offset="2">
+      <open-data type="userNickName"></open-data>
+    </van-col>
+    <van-col span="6" offset="2">
+      <van-button class="history" plain  type="warning" bindtap='loadHistory'>History</van-button>
+      <!-- <van-button round type="default">圆形按钮</van-button> -->
+    </van-col>
 
-</van-row>
+  </van-row>
+</van-transition>
+
 <!-- <van-cell-group>
   <van-cell title="时长" value="{{totalSleepTime}}" label="本次睡眠时长统计" border="{{ false }}" />
   <van-cell title="总计" value="{{totalSleepTime}}" label="本周平均睡眠时长" border="{{ false }}" />
 </van-cell-group> -->
+
 <van-panel title="时长" desc="本次睡眠时长统计" status="{{totalSleepTime}}" use-footer-slot>
-    <scroll-view
-    scroll-y
-    style="height: 200px;"
-  >
-  <view wx:for="{{cloudSleepData}}" class='my-font' scroll-y="{{ true }}" enable-back-to-top="{{true}}">
-  {{item.startTimeString}} : {{ item.totalSleepTime }}
-  </view>
+  <scroll-view scroll-y style="height: 300rpx;">
+    <view wx:for="{{cloudSleepData}}" wx:key="key" class='my-font' scroll-y="{{ true }}" enable-back-to-top="{{true}}">
+      <van-transition name="fade-up" duration="1000">
+
+        {{item.startTimeString}} : {{ item.totalSleepTime }}
+
+      </van-transition>
+
+    </view>
   </scroll-view>
   <view slot="footer">
     <!-- <van-button plain type="warning" bindtap='cloudUpload'>Upload</van-button>
     <van-button plain type="primary" bindtap='getDatabase'>Database</van-button> -->
-  <van-cell title="总计" value="{{sleepFormated}}" label="今日睡眠总时长" border="{{ false }}" />
+    <van-cell title="总计" value="{{sleepFormated}}" label="今日睡眠总时长" border="{{ false }}" />
 
   </view>
 </van-panel>
 
-<view>
+<van-transition name="fade" duration="2000">
   <van-button type="primary" bindtap="start" size="large">Start</van-button>
+
   <van-button type="danger" bindtap="stop" size="large">Stop</van-button>
-</view>
+</van-transition>
+
+
 <!-- <van-submit-bar button-text="云同步" bind:submit="onSubmit" /> -->

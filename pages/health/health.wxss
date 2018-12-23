@@ -1,8 +1,14 @@
 /* pages/health/health.wxss */
 
-
 .my-font {
   font-size: 30rpx;
   /* font-weight: 100; */
   color: #2570a1;
+}
+
+.history {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  z-index: 999;
 }
